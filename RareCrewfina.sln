@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RareCrewAPItoWPF", "RareCrewApi\RareCrewAPItoWPF.csproj", "{64D45D86-F876-4226-A386-3F34335A5C8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{6753245A-97D8-458B-9B9A-4F6E0C14F64F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64D45D86-F876-4226-A386-3F34335A5C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D45D86-F876-4226-A386-3F34335A5C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D45D86-F876-4226-A386-3F34335A5C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D45D86-F876-4226-A386-3F34335A5C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6753245A-97D8-458B-9B9A-4F6E0C14F64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6753245A-97D8-458B-9B9A-4F6E0C14F64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6753245A-97D8-458B-9B9A-4F6E0C14F64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6753245A-97D8-458B-9B9A-4F6E0C14F64F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4449811-8C30-43DE-9D05-B951E5FB9A0E}
+	EndGlobalSection
+EndGlobal
