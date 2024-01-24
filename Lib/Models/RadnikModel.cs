@@ -5,6 +5,8 @@
     {
         // zakomentarisani propovi nisu korisni za resavanje problema pa nema potrebe da koristim resurse
        // public int Id { get; set; }
+
+
         public string EmployeeName { get; set; }
 
         public DateTime StarTimeUtc { get; set; }

@@ -1,16 +1,17 @@
 ﻿<Window x:Class="MainWindowNN.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Radnik List" Height="400" Width="600">
-
-    <ListBox x:Name="workersListBox">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <StackPanel>
-                    <TextBlock Text="{Binding radnik.EmployeeName}" />
-                    <TextBlock Text="{Binding radnik.TotalHoursWorked}" />
-                </StackPanel>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <ListView x:Name="radniciListView">
+            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding EmployeeName}" />
+                    <GridViewColumn Header="Total Hours Worked" DisplayMemberBinding="{Binding TotalHoursWorked}" />
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
 </Window>

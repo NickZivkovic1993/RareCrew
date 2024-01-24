@@ -11,87 +11,115 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.ComponentModel;
 using Lib.Helpers;
+using System.IO;
+using System.Linq;
 
 namespace MainWindowNN
 {
     
     public partial class MainWindow : Window
     {
-        public RadnickiViewModel ViewModel { get; set; }
+       
 
         public MainWindow()
         {
-            
             InitializeComponent();
-            ViewModel = new RadnickiViewModel();
-            DataContext = ViewModel;
-            Loaded += MainWindow_Loaded;
+            GenerateReport();
+            LoadData();
 
-            //List<RadnikModel> Radnici = LoadDataAsync();
-
-            workersListBox.ItemsSource = Radnici;
         }
 
-        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void GenerateReport()
         {
-            await ViewModel.LoadDataAsync();
+            HTMLgenerator reportGenerator = new HTMLgenerator();
+            await reportGenerator.GenerateHtmlReportAsync();
         }
 
-
-
-    }
-
-    public class RadnickiViewModel : INotifyPropertyChanged
-    {
-        private List<RadnikModel> _radnici;
-
-        public List<RadnikModel> Radnici
+        private async void LoadData()
         {
-            get { return _radnici; }
-            set
-            {
-                _radnici = value;
-                OnPropertyChanged(nameof(Radnici));
-            }
-        }
-
-        public async Task<List<RadnikModel>> LoadDataAsync()
-        {
-
+            //ovo treba da ide drugde u apsettings/json najverovatnije al za trenutne potrebe je dovoljno dobro
             string apiKey = "vO17RnE8vuzXzPJo5eaLLjXjmRW07law99QTD90zat9FfOQJKKUcgQ==";
             string apiUrl = $"https://rc-vault-fap-live-1.azurewebsites.net/api/gettimeentries?code={apiKey}";
 
             using (HttpClient client = new HttpClient())
             {
                 var response = await client.GetStringAsync(apiUrl);
-                var Radnici = JsonConvert.DeserializeObject<List<RadnikModel>>(response);
+                var radnici = JsonConvert.DeserializeObject<List<RadnikModel>>(response);
 
-                Radnici = ListMerger.SpojiRadnike(Radnici);
+                radnici = ListMerger.SpojiRadnike(radnici);
 
-                foreach (var radnik in Radnici)
+                foreach (var radnik in radnici)
                 {
                     double round = radnik.HoursWorked.TotalHours;
-                    radnik.TotalHoursWorked = Math.Round(round , 2);
+                    radnik.TotalHoursWorked = Math.Round(round, 2);
                 }
 
-                //Radnici?.Sort((a, b) => b.HoursWorked.CompareTo(a.HoursWorked));
+                radnici.Last().EmployeeName = "Ostali";
 
-                //Radnici = new List<RadnikModel>(Radnici);
+                radniciListView.ItemsSource = radnici;
 
-                return Radnici;
 
+
+                //File.WriteAllText("output.html", htmlContent);
             }
         }
+ 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
     }
 }
+        /// cisto da se vidi da mogu da uredim kod
+
+    //public class RadnickiViewModel : INotifyPropertyChanged
+    //{
+    //    private List<RadnikModel> _radnici;
+
+    //    public List<RadnikModel> Radnici
+    //    {
+    //        get { return _radnici; }
+    //        set
+    //        {
+    //            _radnici = value;
+    //            OnPropertyChanged(nameof(Radnici));
+    //        }
+    //    }
+
+    //    public async Task<List<RadnikModel>> LoadDataAsync()
+    //    {
+
+    //        string apiKey = "vO17RnE8vuzXzPJo5eaLLjXjmRW07law99QTD90zat9FfOQJKKUcgQ==";
+    //        string apiUrl = $"https://rc-vault-fap-live-1.azurewebsites.net/api/gettimeentries?code={apiKey}";
+
+    //        using (HttpClient client = new HttpClient())
+    //        {
+    //            var response = await client.GetStringAsync(apiUrl);
+    //            var Radnici = JsonConvert.DeserializeObject<List<RadnikModel>>(response);
+
+    //            Radnici = ListMerger.SpojiRadnike(Radnici);
+
+    //            foreach (var radnik in Radnici)
+    //            {
+    //                double round = radnik.HoursWorked.TotalHours;
+    //                radnik.TotalHoursWorked = Math.Round(round , 2);
+    //            }
+
+    //            //Radnici?.Sort((a, b) => b.HoursWorked.CompareTo(a.HoursWorked));
+
+    //            //Radnici = new List<RadnikModel>(Radnici);
+
+    //            return Radnici;
+
+    //        }
+    //    }
+
+    //    public event PropertyChangedEventHandler PropertyChanged;
+
+    //    protected virtual void OnPropertyChanged(string propertyName)
+    //    {
+    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //    }
+
+    //}
 
 
 

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RareCrewAPItoWPF", "RareCre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib", "Lib\Lib.csproj", "{6753245A-97D8-458B-9B9A-4F6E0C14F64F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfChartFinal", "WpfChartFinal\WpfChartFinal.csproj", "{AF884D95-8C90-4E97-97F8-CA121A695455}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6753245A-97D8-458B-9B9A-4F6E0C14F64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6753245A-97D8-458B-9B9A-4F6E0C14F64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6753245A-97D8-458B-9B9A-4F6E0C14F64F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF884D95-8C90-4E97-97F8-CA121A695455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF884D95-8C90-4E97-97F8-CA121A695455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF884D95-8C90-4E97-97F8-CA121A695455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF884D95-8C90-4E97-97F8-CA121A695455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
